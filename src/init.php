@@ -56,11 +56,12 @@ function intermedia_events_carousel_cgb_block_assets() { // phpcs:ignore
 	// WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
 	wp_localize_script(
 		'intermedia_events_carousel-cgb-block-js',
-		'cgbGlobal', // Array containing dynamic data for a JS Global.
+		'iceGlobal', // Array containing dynamic data for a JS Global.
 		[
 			'pluginDirPath' => plugin_dir_path( __DIR__ ),
 			'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
 			// Add more data here that you want to access from `cgbGlobal` object.
+			'imgCrops' => IntermediaBlockCarouselEvents::get_registered_crops_attachments()
 		]
 	);
 

@@ -7,75 +7,65 @@ if ( ! defined( 'ABSPATH' ) ) {
 function render_intermedia_events_carousel (  $attributes ) {
 
     //Initializing Block
-    $block= new IntermediaBlockCarouselEvents( $attributes );
+    $block_attributes = new IntermediaBlockCarouselEvents( $attributes );
 
-    if (!isset($attributes['EventsToDisplay'])):  
-        $EventsToDisplay = 10;
-    else:
-        $EventsToDisplay =  $attributes['EventsToDisplay'];
-    endif;
     $args_events = array(
-        'posts_per_page' => $EventsToDisplay,
+        'posts_per_page' => $block_attributes->EventsToDisplay,
         'start_date' => 'today',
     );
-    if ( isset($attributes['catSlugEvent']) && $attributes['catSlugEvent'] !=='') {
+    if ( isset( $block_attributes->catSlugEvent ) && $block_attributes->catSlugEvent !=='') {
         $args_events['tax_query'] = array(
             array(
                 'taxonomy' => 'tribe_events_cat',
                 'field'    => 'slug',
-                'terms'    => explode(",", preg_replace("/\s+/", "", $attributes['catSlugEvent'])),
+                'terms'    => explode( ",", preg_replace( "/\s+/", "", $block_attributes->catSlugEvent ) ),
             )
         );
     }
     // The Query
     $events_query = tribe_get_events( $args_events, $full = true );
 
-    if ( !isset( $attributes['breakpointOne'] ) ):
-
-        $attributes['breakpointOne'] = '0';
-
-    endif;
-
     $classes_carousel = isset( $attributes['className'] ) ? $attributes['className'] : '';
 
     ob_start(); // Turn on output buffering
+    var_dump($block_attributes);
     /* BEGIN HTML OUTPUT */
     ?>
 
     <script>
         
-        jQuery(document).ready(function() {
+        jQuery( document ).ready( function() {
 
-            "use strict";
-            
-            $('.owl-carousel').owlCarousel( {
+	        'use strict';
 
-                <?php if ( !empty( $attributes['loop'] ) ): ?>loop: <?php echo wp_json_encode( $attributes['loop'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['owlItemMargin'] ) ): ?>margin: <?php echo wp_json_encode( $attributes['owlItemMargin'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['autoHeight'] ) ): ?>autoHeight: <?php echo wp_json_encode( $attributes['autoHeight'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['center'] ) ): ?>center: <?php echo wp_json_encode( $attributes['center'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['autoplay'] ) ): ?>autoplay: <?php echo wp_json_encode( $attributes['autoplay'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['autoplayTimeout'] ) ): ?>autoplayTimeout: <?php echo wp_json_encode( $attributes['autoplayTimeout'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['autoplayHoverPause'] ) ): ?>autoplayHoverPause: <?php echo wp_json_encode( $attributes['autoplayHoverPause'] ).','; endif; ?>
-                <?php if ( !empty( $attributes['responsiveClass'] ) ): ?>responsiveClass: <?php echo wp_json_encode( $attributes['responsiveClass'] ).','; endif; ?>
+            $( '.owl-carousel' ).owlCarousel( {
+
+                loop: <?php echo wp_json_encode( $block_attributes->loop ); ?>,
+                margin: <?php echo wp_json_encode( $block_attributes->owlItemMargin ); ?>,
+                autoHeight: <?php echo wp_json_encode( $block_attributes->autoHeight ); ?>,
+                center: <?php echo wp_json_encode( $block_attributes->center ); ?>,
+                autoplay: <?php echo wp_json_encode( $block_attributes->autoplay ); ?>,
+                autoplayTimeout: <?php echo wp_json_encode( $block_attributes->autoplayTimeout ); ?>,
+                autoplayHoverPause: <?php echo wp_json_encode( $block_attributes->autoplayHoverPause ); ?>,
+                responsiveClass: <?php echo wp_json_encode( $block_attributes->responsiveClass ); ?>,
                 responsive: {
-                        <?php echo wp_json_encode( $attributes['breakpointOne'] ).':'; ?> {
-                        <?php if ( isset( $attributes['breakpointOneItems'] ) ): ?>items: <?php echo wp_json_encode( $attributes['breakpointOneItems'] ).','; endif; ?>
-                        <?php if ( !empty( $attributes['breakpointOneNav'] ) ): ?>nav: <?php echo wp_json_encode( $attributes['breakpointOneNav'] ).','; endif; ?>
-                        <?php if ( !empty( $attributes['breakpointOneLoop'] ) ): ?>loop: <?php echo wp_json_encode( $attributes['breakpointOneLoop'] ); endif; ?>
+                    <?php echo wp_json_encode( $block_attributes->breakpointOne ); ?>: {
+                        items: <?php echo wp_json_encode( $block_attributes->breakpointOneItems ); ?>,
+                        nav: <?php echo wp_json_encode( $block_attributes->breakpointOneNav ); ?>,
+                        loop: <?php echo wp_json_encode( $block_attributes->breakpointOneLoop ); ?>,
                     },
-                    <?php if ( isset($attributes['breakpointTwo'] ) ): ?><?php echo wp_json_encode( $attributes['breakpointTwo'] ).':'; ?> {
-                        <?php if ( isset( $attributes['breakpointTwoItems'] ) ): ?>items: <?php echo wp_json_encode( $attributes['breakpointTwoItems'] ).','; endif; ?>
-                        <?php if ( !empty( $attributes['breakpointTwoNav'] ) ): ?>nav: <?php echo wp_json_encode( $attributes['breakpointTwoNav'] ).','; endif; ?>
-                        <?php if ( !empty( $attributes['breakpointTwoLoop'] ) ): ?>loop: <?php echo wp_json_encode( $attributes['breakpointTwoLoop'] ); endif; ?>
-                    },<?php endif; ?>
-                    <?php if ( isset( $attributes['breakpointThree'] ) ): ?><?php echo wp_json_encode( $attributes['breakpointThree'] ).':'; ?> {
-                        <?php if ( isset( $attributes['breakpointThreeItems'] ) ): ?>items: <?php echo wp_json_encode( $attributes['breakpointThreeItems'] ).','; endif; ?>
-                        <?php if ( !empty( $attributes['breakpointThreeNav'] ) ): ?>nav: <?php echo wp_json_encode( $attributes['breakpointThreeNav'] ).','; endif; ?>
-                        <?php if ( !empty( $attributes['breakpointThreeLoop'] ) ): ?>loop: <?php echo wp_json_encode( $attributes['breakpointThreeLoop']); endif; ?>
-                    }<?php endif; ?>
-                }
-
+                    <?php echo wp_json_encode( $block_attributes->breakpointTwo ); ?>: {
+                        items: <?php echo wp_json_encode( $block_attributes->breakpointTwoItems ); ?>,
+                        nav: <?php echo wp_json_encode( $block_attributes->breakpointTwoNav ); ?>,
+                        loop: <?php echo wp_json_encode( $block_attributes->breakpointTwoLoop ); ?>,
+                    },
+                    <?php echo wp_json_encode( $block_attributes->breakpointThree ); ?>: {
+                        items: <?php echo wp_json_encode( $block_attributes->breakpointThreeItems ); ?>,
+                        nav: <?php echo wp_json_encode( $block_attributes->breakpointThreeNav ); ?>,
+                        loop: <?php echo wp_json_encode( $block_attributes->breakpointThreeLoop ); ?>,
+                    },
+                },
+                
             } );
 
         } );
@@ -89,7 +79,7 @@ function render_intermedia_events_carousel (  $attributes ) {
         <!-- the loop -->
         <?php while ( $events_query->have_posts() ) : $events_query->the_post(); ?>
 
-            <?php $featured_img_url = get_the_post_thumbnail_url( get_the_ID(),'full' );  ?>
+            <?php $featured_img_url = get_the_post_thumbnail_url( get_the_ID(), $block_attributes->featuredImageCrop );  ?>
             <div class="item">
                 <?php if( $featured_img_url && $featured_img_url !== '' ): ?>
                 <img src="<?php echo esc_url( $featured_img_url ); ?>"/>

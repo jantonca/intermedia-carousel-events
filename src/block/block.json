@@ -8,6 +8,10 @@
 		"catSlugEvent": {
 			"type": "string"
 		},
+        "featuredImageCrop": {
+			"type": "string",
+            "default": "full"
+		},
 		"loop": {
 			"type": "boolean",
             "default": false
@@ -29,7 +33,8 @@
             "default": false
 		},
 		"autoplayTimeout": {
-			"type": "number"
+			"type": "number",
+            "default": 3000
 		},
 		"autoplayHoverPause": {
 			"type": "boolean",

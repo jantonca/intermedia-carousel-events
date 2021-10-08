@@ -26,6 +26,7 @@ const {
 	RangeControl,
 	ToggleControl,
 	TextControl,
+	SelectControl,
 } = wp.components;
 
 /**
@@ -180,6 +181,21 @@ registerBlockType( 'cgb/block-intermedia-display-events', {
 								help="Filter the query by category slug. Example: my-category-slug"
 								value={ attributes.catSlugEvent }
 								onChange={ ( catSlugEvent ) => setAttributes( { catSlugEvent } ) }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								className="crops"
+								label={ __( 'Feature Image Sizes:' ) }
+								help="Select a crop for the featured image. If no crops available the default is 'full'"
+								value={ attributes.featuredImageCrop }
+								onChange={ ( value ) => {
+									setAttributes( { featuredImageCrop: value } );
+								} }
+								options={ window.iceGlobal.imgCrops && window.iceGlobal.imgCrops.map( size => {
+									return { value: size, label: size };
+								} )
+								}
 							/>
 						</PanelRow>
 					</PanelBody>

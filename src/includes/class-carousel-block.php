@@ -17,5 +17,12 @@ class IntermediaBlockCarouselEvents {
 
         }
 	}
+    public static function get_registered_crops_attachments() {
+		
+		$image_subsizes = array_keys( wp_get_registered_image_subsizes() );
+		
+		return $image_subsizes;
+		
+	}
 
 }
