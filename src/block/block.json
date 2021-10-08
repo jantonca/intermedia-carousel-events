@@ -1,0 +1,91 @@
+{
+   "attributes": {
+
+		"EventsToDisplay": {
+			"type": "number",
+            "default": 5
+		},
+		"catSlugEvent": {
+			"type": "string"
+		},
+		"loop": {
+			"type": "boolean",
+            "default": false
+		},
+		"center": {
+			"type": "boolean",
+            "default": false
+		},
+		"owlItemMargin": {
+			"type": "number",
+            "default": 10
+		},
+		"autoplay": {
+			"type": "boolean",
+            "default": false
+		},
+		"autoHeight": {
+			"type": "boolean",
+            "default": false
+		},
+		"autoplayTimeout": {
+			"type": "number"
+		},
+		"autoplayHoverPause": {
+			"type": "boolean",
+            "default": false
+		},
+		"responsiveClass": {
+			"type": "boolean",
+            "default": false
+		},
+		"breakpointOne": {
+			"type": "number",
+			"default": 0
+		},
+		"breakpointTwo": {
+			"type": "number",
+			"default": 600
+		},
+		"breakpointThree": {
+			"type": "number",
+			"default": 1000
+		},
+		"breakpointOneItems": {
+			"type": "number",
+			"default": 1
+		},
+		"breakpointTwoItems": {
+			"type": "number",
+			"default": 2
+		},
+		"breakpointThreeItems": {
+			"type": "number",
+			"default": 3
+		},
+		"breakpointOneLoop": {
+			"type": "boolean",
+            "default": false
+		},
+		"breakpointTwoLoop": {
+			"type": "boolean",
+            "default": false
+		},
+		"breakpointThreeLoop": {
+			"type": "boolean",
+            "default": false
+		},
+		"breakpointOneNav": {
+			"type": "boolean",
+            "default": false
+		},
+		"breakpointTwoNav": {
+			"type": "boolean",
+            "default": false
+		},
+		"breakpointThreeNav": {
+			"type": "boolean",
+            "default": false
+		}
+	}
+}

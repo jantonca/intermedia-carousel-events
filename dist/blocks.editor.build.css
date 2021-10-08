@@ -1,0 +1,59 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+/*METABOXES STYLES STARTS*/
+.components-base-control__label {
+  max-width: 100% !important; }
+
+/*METABOXES STYLES ENDS*/
+/*STYLE ITEMS STARTS*/
+.block-editor-block-list__block-edit .owl-carousel {
+  padding: 0 20px; }
+  .block-editor-block-list__block-edit .owl-carousel .owl-item .item img {
+    max-width: 30%;
+    padding: 10px; }
+
+.block-editor-block-list__block-edit .is-style-Landscape .owl-carousel {
+  padding: 0 20px; }
+  .block-editor-block-list__block-edit .is-style-Landscape .owl-carousel .owl-item .item img {
+    max-width: 30%;
+    padding: 10px; }
+
+.block-editor-block-list__block-edit .is-style-Portrait .owl-carousel {
+  padding: 0 20px; }
+  .block-editor-block-list__block-edit .is-style-Portrait .owl-carousel .owl-item .item img {
+    max-width: 100%;
+    padding: 10px; }
+
+.block-editor-block-list__block-edit .is-style-Overlay .owl-carousel {
+  padding: 0 20px; }
+  .block-editor-block-list__block-edit .is-style-Overlay .owl-carousel .owl-item .item img {
+    max-width: 100%;
+    padding: 10px; }
+
+/*STYLE ITEMS ENDS*/
+/*NAVIGATION STYLE STARTS*/
+.owl-nav > button {
+  top: 35%;
+  -webkit-transform: translateY(-60%);
+      -ms-transform: translateY(-60%);
+          transform: translateY(-60%); }
+  .owl-nav > button span {
+    font-size: 30px; }
+
+.owl-nav .owl-prev {
+  left: -10px; }
+
+.owl-nav .owl-next {
+  right: -10px; }
+
+/*NAVIGATION STYLE ENDS*/
